@@ -1,2 +1,2 @@
 export { AvatarUser } from "./AvatarUser";
-export { UserSliders } from "./UserSliders";
+export { UserSliders } from "./UsersSlider";
