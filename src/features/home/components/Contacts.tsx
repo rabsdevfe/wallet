@@ -1,11 +1,11 @@
 "use client";
-import { useMemo } from "react";
+
 import { useFetchContacts } from "../hooks/useFetchContacts";
 import { UserSliders } from "@/components/ui/UsersSlider";
 
 export function Contacts() {
   const { data, isLoading, error } = useFetchContacts();
-  console.log(data);
+
   if (isLoading) {
     return (
       <div className="p-4">
@@ -33,9 +33,7 @@ export function Contacts() {
       </div>
     );
   }
-
-  const contacts = useMemo(() => data?.results || [], [data]);
-
+  const contacts = data?.results || [];
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold mb-4">Send Again</h2>
