@@ -30,6 +30,7 @@ async function openDB(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains(BALANCE_STORE)) {
         db.createObjectStore(BALANCE_STORE, {
           keyPath: "user_id",
+          autoIncrement: true,
         });
       }
 

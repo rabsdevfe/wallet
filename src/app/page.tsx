@@ -3,14 +3,20 @@
 import { useBalanceStore, useFetchBalance } from "@/features/balance";
 import { Contacts } from "@/features/home/components/Contacts";
 import { useFetchTransactions } from "@/features/home/hooks/useFetchTransactions";
+import { useUserStore } from "@/features/user";
 
 export default function HomePage() {
   const { data, isLoading, error } = useFetchTransactions();
   const { data: balance, isLoading: isLoadingBalance } =
     useFetchBalance("id_test");
-
+  const { user, isLoading: isLoadingUser } = useUserStore();
   const currentBalance = useBalanceStore((state) => state.balance);
+  console.log("--------------------------------");
+  console.log("isLoadingUser", isLoadingUser);
+  console.log("isLoadingBalance", isLoadingBalance);
   console.log("currentBalance", currentBalance);
+  console.log("user", user);
+  console.log("--------------------------------");
   return (
     <div className="p-8">
       <div className="px-6 py-8">

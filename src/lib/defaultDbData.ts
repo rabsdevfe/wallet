@@ -52,10 +52,10 @@ const DEFAULT_TRANSACTIONS = [
 ];
 
 const DEFAULT_BALANCE = {
-  user_id: "id_test",
+  user_id: "16591b70-ec07-4474-ab08-b9455e393989", //I Think the user id should not be necessary in real enviroment, could be enough with header token
   balance: 150000,
-  last_modification_date: new Date("2024-01-19T11:00:00"), // Fecha más reciente de las transacciones
-  last_modification_transaction_id: null, // Se actualizará cuando tengamos IDs auto-generados
+  last_modification_date: new Date("2024-01-19T11:00:00"),
+  last_modification_transaction_id: null,
 };
 
 export { DEFAULT_TRANSACTIONS, DEFAULT_BALANCE };

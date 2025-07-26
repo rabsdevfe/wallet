@@ -31,3 +31,15 @@ export type Name = {
   first: string;
   last: string;
 };
+
+export type Street = {
+  number: number;
+  name: string;
+};
+
+export type Location = {
+  street: Street;
+  city: string;
+  state: string;
+  country: string;
+};

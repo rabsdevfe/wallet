@@ -1,9 +1,6 @@
-import { Login, Name, PaginatedResponse, Picture } from "./types";
+import { Person } from "./Person";
+import { PaginatedResponse } from "./types";
 
-export type Contact = {
-  name: Name;
-  login: Login;
-  picture: Picture;
-};
+export type Contact = Pick<Person, "name" | "login" | "picture">;
 
 export type ContactsResponse = PaginatedResponse<Contact>;
