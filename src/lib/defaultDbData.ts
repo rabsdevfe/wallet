@@ -52,7 +52,7 @@ const DEFAULT_TRANSACTIONS = [
 ];
 
 const DEFAULT_BALANCE = {
-  user_id: "16591b70-ec07-4474-ab08-b9455e393989", //I Think the user id should not be necessary in real enviroment, could be enough with header token
+  user_id: "main_user", //TODO: check this
   balance: 150000,
   last_modification_date: new Date("2024-01-19T11:00:00"),
   last_modification_transaction_id: null,

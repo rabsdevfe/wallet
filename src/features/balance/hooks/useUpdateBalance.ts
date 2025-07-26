@@ -14,7 +14,8 @@ export const useUpdateBalance = () => {
     },
     onSuccess: (balance) => {
       setBalance(balance);
-      queryClient.invalidateQueries({ queryKey: ["balance", balance.user_id] });
+
+      queryClient.invalidateQueries({ queryKey: ["balance"] });
     },
   });
 };
