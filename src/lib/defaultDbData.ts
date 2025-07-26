@@ -1,6 +1,5 @@
 const DEFAULT_TRANSACTIONS = [
   {
-    id: "1",
     type: "deposit" as const,
     createdAt: new Date("2024-01-15T10:30:00"),
     amount: 1500.0,
@@ -10,7 +9,6 @@ const DEFAULT_TRANSACTIONS = [
     picture_path: null,
   },
   {
-    id: "2",
     type: "transfer" as const, //TODO: modified to enum
     createdAt: new Date("2024-01-16T14:20:00"),
     amount: -250.5,
@@ -20,7 +18,6 @@ const DEFAULT_TRANSACTIONS = [
     picture_path: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    id: "3",
     type: "payment" as const,
     createdAt: new Date("2024-01-17T09:15:00"),
     amount: -89.99,
@@ -30,7 +27,6 @@ const DEFAULT_TRANSACTIONS = [
     picture_path: null,
   },
   {
-    id: "4",
     type: "transfer" as const,
     createdAt: new Date("2024-01-18T16:45:00"),
     amount: -320.0,
@@ -40,7 +36,6 @@ const DEFAULT_TRANSACTIONS = [
     picture_path: "https://randomuser.me/api/portraits/women/45.jpg",
   },
   {
-    id: "5",
     type: "deposit" as const,
     createdAt: new Date("2024-01-19T11:00:00"),
     amount: 750.25,

@@ -14,6 +14,7 @@ async function openDB(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains(TRANSACTIONS_STORE)) {
         const store = db.createObjectStore(TRANSACTIONS_STORE, {
           keyPath: "id",
+          autoIncrement: true,
         });
 
         store.createIndex("type", "type", { unique: false });
