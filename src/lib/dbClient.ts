@@ -1,5 +1,10 @@
-import { DB_NAME, DB_VERSION, TRANSACTIONS_STORE } from "./contants";
-import { populateDefaultData } from "./populateDefaultData";
+import {
+  BALANCE_STORE,
+  DB_NAME,
+  DB_VERSION,
+  TRANSACTIONS_STORE,
+} from "./contants";
+import { preloadIndexedDBDefaultData } from "./preloadIndexedDBDefaultData";
 
 async function openDB(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -22,8 +27,14 @@ async function openDB(): Promise<IDBDatabase> {
         store.createIndex("amount", "amount", { unique: false });
       }
 
+      if (!db.objectStoreNames.contains(BALANCE_STORE)) {
+        db.createObjectStore(BALANCE_STORE, {
+          keyPath: "user_id",
+        });
+      }
+
       request.transaction?.addEventListener("complete", async () => {
-        await populateDefaultData(db);
+        await preloadIndexedDBDefaultData(db);
       });
     };
   });

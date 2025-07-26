@@ -1,11 +1,16 @@
 // import Link from 'next/link'
 "use client";
+import { useBalanceStore, useFetchBalance } from "@/features/balance";
 import { Contacts } from "@/features/home/components/Contacts";
 import { useFetchTransactions } from "@/features/home/hooks/useFetchTransactions";
 
 export default function HomePage() {
   const { data, isLoading, error } = useFetchTransactions();
-  console.log(data);
+  const { data: balance, isLoading: isLoadingBalance } =
+    useFetchBalance("id_test");
+
+  const currentBalance = useBalanceStore((state) => state.balance);
+  console.log("currentBalance", currentBalance);
   return (
     <div className="p-8">
       <div className="px-6 py-8">

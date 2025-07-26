@@ -1,5 +1,4 @@
-const DB_NAME = "WayniWalletDB";
-const DB_VERSION = 1;
-const TRANSACTIONS_STORE = "transactions";
-
-export { DB_NAME, DB_VERSION, TRANSACTIONS_STORE };
+export const DB_NAME = "wallet";
+export const DB_VERSION = 1;
+export const TRANSACTIONS_STORE = "transactions";
+export const BALANCE_STORE = "balance";
