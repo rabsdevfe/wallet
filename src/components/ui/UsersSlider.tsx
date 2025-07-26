@@ -1,3 +1,5 @@
+"use client";
+import Link from "next/link";
 import { AvatarUser } from "./AvatarUser";
 import { Contact } from "@/types/contacts";
 
@@ -10,14 +12,16 @@ export function UserSliders({ contacts }: Props) {
       <div className="flex gap-6 pb-4">
         {" "}
         {contacts.map((contact, index) => (
-          <div key={index} className="flex-shrink-0">
-            <AvatarUser
-              url={contact.picture.thumbnail}
-              name={`${contact.name.first}`}
-              size="sm"
-              orientation="vertical"
-            />
-          </div>
+          <Link href="/send-again" key={index}>
+            <div key={index} className="flex-shrink-0">
+              <AvatarUser
+                url={contact.picture.thumbnail}
+                name={`${contact.name.first}`}
+                size="sm"
+                orientation="vertical"
+              />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,0 +1,64 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px; /* Círculo perfecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.iconPlaceholder {
+  width: 24px;
+  height: 24px;
+  background-color: #9ca3af; /* Gris para ícono inactivo */
+  /* Aquí podrías usar mask-image para aplicar los SVG */
+}
+
+.label {
+  font-size: 0.75rem; /* 12px */
+  color: #6b7280; /* Gris para texto inactivo */
+  transition: color 0.2s ease-in-out;
+}
+
+/* --- Estilos para el estado Activo --- */
+.activeIcon .iconPlaceholder {
+  background-color: #ffffff; /* Ícono blanco cuando está activo */
+}
+
+.activeIcon {
+  background-color: #6d28d9; /* Fondo morado para el ícono activo */
+}
+
+.activeLabel {
+  color: #6d28d9; /* Texto morado cuando está activo */
+  font-weight: 600;
+} 
