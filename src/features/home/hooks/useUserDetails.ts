@@ -1,4 +1,3 @@
-"use client";
 import { useBalanceStore, useFetchBalance } from "@/features/balance";
 import { useUserStore, useFetchUser } from "@/features/user";
 

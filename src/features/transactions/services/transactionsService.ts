@@ -1,0 +1,89 @@
+// Movido desde src/features/home/services/transactionsService.ts + mejorado
+import { dbClient } from "@/lib/dbClient";
+import { TRANSACTIONS_STORE } from "@/lib/contants";
+import type {
+  Transaction,
+  TransactionQuery,
+  PaginatedTransactions,
+} from "../types";
+
+export const transactionsService = {
+  create: async (
+    transaction: Omit<Transaction, "id" | "createdAt">
+  ): Promise<void> => {
+    const newTransaction = {
+      ...transaction,
+      createdAt: new Date(),
+    };
+
+    await dbClient.set(TRANSACTIONS_STORE, newTransaction);
+  },
+
+  getById: async (id: string): Promise<Transaction | null> => {
+    return dbClient.get<Transaction>(TRANSACTIONS_STORE, id);
+  },
+
+  getPaginated: async (
+    query: TransactionQuery = {}
+  ): Promise<PaginatedTransactions> => {
+    const { page = 1, limit = 10 } = query;
+
+    const { data, total } = await dbClient.getPaginated<Transaction>(
+      TRANSACTIONS_STORE,
+      page,
+      limit
+    );
+
+    const sortedData = data.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+
+    return {
+      data: sortedData,
+      total,
+      page,
+      limit,
+      hasMore: page * limit < total,
+    };
+  },
+
+  getTransfers: async (
+    query: TransactionQuery = {}
+  ): Promise<PaginatedTransactions> => {
+    const { page = 1, limit = 10 } = query;
+
+    const allTransactions = await dbClient.getAll<Transaction>(
+      TRANSACTIONS_STORE
+    );
+
+    const transfers = allTransactions
+      .filter((transaction) => transaction.type === "transfer")
+      .sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+    const total = transfers.length;
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedTransfers = transfers.slice(startIndex, endIndex);
+
+    return {
+      data: paginatedTransfers,
+      total,
+      page,
+      limit,
+      hasMore: endIndex < total,
+    };
+  },
+
+  getAll: async (): Promise<Transaction[]> => {
+    const transactions = await dbClient.getAll<Transaction>(TRANSACTIONS_STORE);
+
+    return transactions.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  },
+};

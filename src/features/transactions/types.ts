@@ -1,18 +1,20 @@
-export type Transaction = {
+export type TransactionType = "payment" | "transfer" | "deposit";
+
+export interface Transaction {
   id?: string;
-  type: "payment" | "transfer" | "deposit";
+  type: TransactionType;
   createdAt: Date;
   amount: number;
   description?: string;
   user_name?: string;
   user_id?: string;
   picture_path?: string;
-};
+}
 
 export interface TransactionQuery {
   page?: number;
   limit?: number;
-  type?: Transaction["type"];
+  type?: TransactionType;
 }
 
 export interface PaginatedTransactions {

@@ -1,5 +1,3 @@
-// import Link from 'next/link'
-"use client";
 import { Contacts } from "@/features/home/components/Contacts";
 import { UserDetails } from "@/features/home/components/UserDetails";
 import { NavigationFooter } from "@/components/ui/NavigationFooter";

@@ -1,3 +1,4 @@
+"use client";
 import { useUserDetails } from "../hooks/useUserDetails";
 
 function UserDetails() {
