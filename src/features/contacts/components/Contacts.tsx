@@ -1,10 +1,13 @@
 "use client";
-
 import { useFetchContacts } from "../hooks/useFetchContacts";
 import { UserSliders } from "@/components/ui/UsersSlider";
+import { useContactsStore } from "../store";
+import { useRouter } from "next/navigation";
 
 export function Contacts() {
   const { data, isLoading, error } = useFetchContacts();
+  const { setSelectedContact } = useContactsStore();
+  const router = useRouter();
 
   if (isLoading) {
     return (
@@ -33,11 +36,19 @@ export function Contacts() {
       </div>
     );
   }
+
   const contacts = data?.results || [];
+
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold mb-4">Send Again</h2>
-      <UserSliders contacts={contacts} />
+      <UserSliders
+        contacts={contacts}
+        onSelect={(selectedContact) => {
+          setSelectedContact(selectedContact);
+          router.push(`/send-again/transfer/`);
+        }}
+      />
     </div>
   );
 }

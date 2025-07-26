@@ -1,4 +1,3 @@
-// Movido desde src/features/home/services/transactionsService.ts + mejorado
 import { dbClient } from "@/lib/dbClient";
 import { TRANSACTIONS_STORE } from "@/lib/contants";
 import type {
@@ -8,19 +7,8 @@ import type {
 } from "../types";
 
 export const transactionsService = {
-  create: async (
-    transaction: Omit<Transaction, "id" | "createdAt">
-  ): Promise<void> => {
-    const newTransaction = {
-      ...transaction,
-      createdAt: new Date(),
-    };
-
-    await dbClient.set(TRANSACTIONS_STORE, newTransaction);
-  },
-
-  getById: async (id: string): Promise<Transaction | null> => {
-    return dbClient.get<Transaction>(TRANSACTIONS_STORE, id);
+  getById: async (id: number): Promise<Transaction | null> => {
+    return await dbClient.get<Transaction>(TRANSACTIONS_STORE, id);
   },
 
   getPaginated: async (

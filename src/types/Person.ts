@@ -1,4 +1,4 @@
-import { Login, Location, Name, Picture } from "./types";
+import { Id, Login, Location, Name, Picture } from "./types";
 
 export type Person = {
   name: Name;
@@ -7,4 +7,5 @@ export type Person = {
   login: Login;
   picture: Picture;
   phone: string;
+  id: Id;
 };

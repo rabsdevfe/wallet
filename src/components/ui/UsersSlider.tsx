@@ -5,23 +5,28 @@ import { Contact } from "@/types/contacts";
 
 interface Props {
   contacts: Contact[];
+  onSelect: (contact: Contact) => void;
 }
-export function UserSliders({ contacts }: Props) {
+export function UserSliders({ contacts, onSelect }: Props) {
+  if (!contacts) return null;
+
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex gap-6 pb-4">
         {" "}
         {contacts.map((contact, index) => (
-          <Link href="/send-again" key={index}>
-            <div key={index} className="flex-shrink-0">
-              <AvatarUser
-                url={contact.picture.thumbnail}
-                name={`${contact.name.first}`}
-                size="sm"
-                orientation="vertical"
-              />
-            </div>
-          </Link>
+          <div
+            key={index}
+            className="flex-shrink-0"
+            onClick={() => onSelect(contact)}
+          >
+            <AvatarUser
+              url={contact.picture.thumbnail}
+              name={`${contact.name.first}`}
+              size="sm"
+              orientation="vertical"
+            />
+          </div>
         ))}
       </div>
     </div>

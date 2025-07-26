@@ -1,4 +1,4 @@
-import { Contacts } from "@/features/home/components/Contacts";
+import { Contacts } from "@/features/contacts";
 import { UserDetails } from "@/features/home/components/UserDetails";
 import { NavigationFooter } from "@/components/ui/NavigationFooter";
 

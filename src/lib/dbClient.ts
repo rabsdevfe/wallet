@@ -42,7 +42,7 @@ async function openDB(): Promise<IDBDatabase> {
 }
 
 export const dbClient = {
-  get: async <T>(storeName: string, id: string): Promise<T | null> => {
+  get: async <T>(storeName: string, id: number): Promise<T | null> => {
     const db = await openDB();
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(storeName, "readonly");
@@ -108,5 +108,9 @@ export const dbClient = {
       };
       countRequest.onerror = () => reject(countRequest.error);
     });
+  },
+
+  getDB: async (): Promise<IDBDatabase> => {
+    return await openDB();
   },
 };

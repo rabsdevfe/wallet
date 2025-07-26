@@ -43,3 +43,8 @@ export type Location = {
   state: string;
   country: string;
 };
+
+export type Id = {
+  name: string;
+  value: string;
+};

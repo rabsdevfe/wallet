@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { transactionsService } from "../services/transactionsService";
 
-export const useTransactionById = (id: string) => {
+export const useFetchTransaction = (id: number) => {
   return useQuery({
     queryKey: ["transactions", "detail", id],
     queryFn: () => transactionsService.getById(id),
