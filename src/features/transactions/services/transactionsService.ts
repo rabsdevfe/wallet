@@ -16,23 +16,29 @@ export const transactionsService = {
   ): Promise<PaginatedTransactions> => {
     const { page = 1, limit = 10 } = query;
 
-    const { data, total } = await dbClient.getPaginated<Transaction>(
-      TRANSACTIONS_STORE,
-      page,
-      limit
+    const allTransactions = await dbClient.getAll<Transaction>(
+      TRANSACTIONS_STORE
     );
 
-    const sortedData = data.sort(
+    const sortedTransactions = allTransactions.sort(
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
 
+    const total = sortedTransactions.length;
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedTransactions = sortedTransactions.slice(
+      startIndex,
+      endIndex
+    );
+
     return {
-      data: sortedData,
+      data: paginatedTransactions,
       total,
       page,
       limit,
-      hasMore: page * limit < total,
+      hasMore: endIndex < total,
     };
   },
 

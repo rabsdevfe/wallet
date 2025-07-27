@@ -1,6 +1,5 @@
 export * from "./hooks/useFetchTransactions";
 export * from "./hooks/useFetchTransfers";
-export * from "./hooks/useCreateTransaction";
 export * from "./hooks/useFetchTransaction";
 export * from "./hooks/useProcessTransfer";
 export * from "./services/transactionsService";
