@@ -1,6 +1,7 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { useFetchTransaction } from "@/features/transactions";
+import { formatTransactionDate } from "@/utils/dateFormatter";
 import { useEffect } from "react";
 
 export default function TransactionDetailsPage() {
@@ -65,7 +66,7 @@ export default function TransactionDetailsPage() {
           </div>
           <div>
             <span className="font-medium">Fecha:</span>{" "}
-            {new Date(transaction.createdAt).toLocaleString()}
+            {formatTransactionDate(transaction.createdAt)}
           </div>
           <div>
             <span className="font-medium">Tipo:</span> {transaction.type}

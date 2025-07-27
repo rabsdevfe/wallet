@@ -9,6 +9,7 @@ export interface Transaction {
   user_name?: string;
   user_id?: string;
   picture_path?: string;
+  service_name?: string;
 }
 
 export interface TransactionQuery {

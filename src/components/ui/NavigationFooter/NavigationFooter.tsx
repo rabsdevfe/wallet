@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./NavigationFooter.module.css";
+import styles from "./styles.module.css";
+import { Home, BanknoteArrowDown, UserCircle2 } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home", icon: "home" },
@@ -13,6 +14,12 @@ const navLinks = [
 export const NavigationFooter = () => {
   const pathname = usePathname();
 
+  function getIcon(icon: string, isActive: boolean) {
+    const color = isActive ? "#662ab2" : "#000";
+    if (icon === "home") return <Home color={color} />;
+    if (icon === "transfers") return <BanknoteArrowDown color={color} />;
+    if (icon === "profile") return <UserCircle2 color={color} />;
+  }
   return (
     <footer className={styles.footer}>
       <nav className={styles.nav}>
@@ -20,15 +27,7 @@ export const NavigationFooter = () => {
           const isActive = pathname === href;
           return (
             <Link href={href} key={index} className={styles.link}>
-              <div
-                className={`${styles.iconWrapper} ${
-                  isActive ? styles.activeIcon : ""
-                }`}
-              >
-                <div className={styles.iconPlaceholder}>
-                  {/* Aquí iría el ícono SVG basado en el 'icon' */}
-                </div>
-              </div>
+              <div>{getIcon(icon, isActive)}</div>
               <span
                 className={`${styles.label} ${
                   isActive ? styles.activeLabel : ""

@@ -9,6 +9,8 @@ interface Props {
 
 export const PageContainer = ({ children, className }: Props) => {
   return (
-    <div className={`${styles.container} ${className || ""}`}>{children}</div>
+    <div className={`${styles.container} ${className || ""}`}>
+      <div className={styles.content}>{children}</div>
+    </div>
   );
 };

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  gap: 24px;
 }
 
 .header {
@@ -11,6 +10,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 18px;
+  margin-bottom: 24px;
 }
 
 .content {

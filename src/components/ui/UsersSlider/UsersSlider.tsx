@@ -1,13 +1,12 @@
 "use client";
-import Link from "next/link";
-import { AvatarUser } from "./AvatarUser";
+import { AvatarUser } from "../AvatarUser";
 import { Contact } from "@/types/contacts";
 
 interface Props {
   contacts: Contact[];
   onSelect: (contact: Contact) => void;
 }
-export function UserSliders({ contacts, onSelect }: Props) {
+function UserSliders({ contacts, onSelect }: Props) {
   if (!contacts) return null;
 
   return (
@@ -21,9 +20,9 @@ export function UserSliders({ contacts, onSelect }: Props) {
             onClick={() => onSelect(contact)}
           >
             <AvatarUser
-              url={contact.picture.thumbnail}
+              url={contact.picture.medium}
               name={`${contact.name.first}`}
-              size="sm"
+              size="md"
               orientation="vertical"
             />
           </div>
@@ -32,3 +31,4 @@ export function UserSliders({ contacts, onSelect }: Props) {
     </div>
   );
 }
+export { UserSliders };

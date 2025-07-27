@@ -1,0 +1,66 @@
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.itemIconContainer {
+  width: 52px;
+  height: 52px;
+  background-color: #f9f5fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemContainer {
+  display: grid;
+  grid-template-columns: 52px auto auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.itemIcon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #662ab2;
+}
+
+.itemTitle {
+  font-size: 16px;
+  color: #000;
+}
+
+.itemDate {
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+}
+
+.itemAmount {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.itemAmount.transfer,
+.itemAmount.payment {
+  color: #f90b1b;
+}
+
+.itemAmount.deposit {
+  color: #03b961;
+}

@@ -2,6 +2,7 @@
 import { useFetchTransfers } from "../hooks/useFetchTransfers";
 import { useTransactionsStore } from "../store";
 import type { Transaction } from "../types";
+import { formatTransactionDate } from "@/utils/dateFormatter";
 
 export const TransfersList = () => {
   const { isLoading, isError } = useFetchTransfers();
@@ -23,7 +24,7 @@ export const TransfersList = () => {
           <h3 className="font-semibold">{transfer.description}</h3>
           <p className="text-lg">${transfer.amount.toLocaleString()}</p>
           <p className="text-sm text-gray-600">
-            {new Date(transfer.createdAt).toLocaleDateString()}
+            {formatTransactionDate(transfer.createdAt)}
           </p>
           <p className="text-xs text-blue-600">Tipo: {transfer.type}</p>
         </div>
