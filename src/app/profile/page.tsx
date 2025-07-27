@@ -1,7 +1,10 @@
+import { PageLayout } from "@/components/ui";
+import { Navbar } from "@/components/ui";
+
 export default function ProfilePage() {
   return (
-    <div className="p-8">
-      <div className="text-2xl font-bold mb-8">Profile View</div>
-    </div>
+    <PageLayout header={<Navbar title="Profile" />}>
+      <div>Profile</div>
+    </PageLayout>
   );
 }

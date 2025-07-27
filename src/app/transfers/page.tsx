@@ -1,11 +1,12 @@
 "use client";
 import { TransfersList } from "@/features/transactions";
+import { PageLayout } from "@/components/ui";
+import { Navbar } from "@/components/ui";
 
 export default function TransfersPage() {
   return (
-    <div className="p-8">
-      <div className="text-2xl font-bold mb-8">Transfers View</div>
+    <PageLayout header={<Navbar title="Transfers" />}>
       <TransfersList />
-    </div>
+    </PageLayout>
   );
 }

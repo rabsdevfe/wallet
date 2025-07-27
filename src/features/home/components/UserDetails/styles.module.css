@@ -2,3 +2,9 @@
   width: 80%;
   max-width: 375px;
 }
+.balanceBox {
+  padding: 8px;
+  max-width: 230px;
+  margin: 0 auto;
+  text-align: center;
+}

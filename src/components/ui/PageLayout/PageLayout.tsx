@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { PageContainer } from "../PageContainer";
+import { useContentSize } from "./useContentSize";
 
 interface Props {
   header?: React.ReactNode;
@@ -11,13 +12,25 @@ interface Props {
 }
 
 export const PageLayout = ({ header, children, footer, className }: Props) => {
+  const { containerHeight, layoutRef, headerRef, footerRef } = useContentSize();
+
   return (
-    <div className={`${styles.layout} ${className || ""}`}>
-      {header && <div className={styles.header}>{header}</div>}
+    <div ref={layoutRef} className={`${styles.layout} ${className || ""}`}>
+      {header && (
+        <div ref={headerRef} className={styles.header}>
+          {header}
+        </div>
+      )}
 
-      <PageContainer className={styles.content}>{children}</PageContainer>
+      <PageContainer style={{ height: containerHeight }}>
+        {children}
+      </PageContainer>
 
-      {footer && <div className={styles.footer}>{footer}</div>}
+      {footer && (
+        <div ref={footerRef} className={styles.footer}>
+          {footer}
+        </div>
+      )}
     </div>
   );
 };

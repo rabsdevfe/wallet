@@ -10,10 +10,10 @@ type Props = {
   className?: string;
 };
 export const TransactionsList = ({ className }: Props) => {
-  const [fetchParams, setFetchParams] = useState({ page: 1, limit: 3 }); // TODO: finish this
-  const { isLoading, isError } = useFetchTransactions(fetchParams);
+  const [fetchParams, setFetchParams] = useState({ page: 1, limit: 8 }); // TODO: finish this
+  const { isLoading, isError } = useFetchTransactions({ page: 1, limit: 8 });
   const transactions = useTransactionsStore((state) => state.transactions);
-
+  console.log("transactions", transactions);
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     setFetchParams({ page: 1, limit: 6 });

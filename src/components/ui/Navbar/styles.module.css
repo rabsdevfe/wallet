@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.back {
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+}
+
+.content {
+  font-size: 16px;
+  font-weight: 600;
+}
