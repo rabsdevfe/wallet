@@ -16,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <body
+        className={inter.variable}
+        style={{ backgroundColor: "var(--primary-color)" }}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,18 +1,15 @@
 "use client";
-import { Contacts } from "@/features/contacts";
+import { PageLayout } from "@/components/ui/PageLayout";
 import { UserDetails } from "@/features/home/components/UserDetails";
-import { NavigationFooter } from "@/components/ui/NavigationFooter";
+import { Contacts } from "@/features/contacts";
 import { TransactionsList } from "@/components/TransactionsList";
+import { NavigationFooter } from "@/components/ui/NavigationFooter";
 
 export default function HomePage() {
   return (
-    <div className="p-8">
-      <UserDetails />
-      <div>
-        <Contacts />
-      </div>
+    <PageLayout header={<UserDetails />} footer={<NavigationFooter />}>
+      <Contacts />
       <TransactionsList />
-      <NavigationFooter />
-    </div>
+    </PageLayout>
   );
 }
