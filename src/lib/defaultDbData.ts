@@ -26,6 +26,7 @@ const DEFAULT_TRANSACTIONS = [
     user_name: "Juan Pérez",
     user_id: "user_123",
     picture_path: "https://randomuser.me/api/portraits/men/32.jpg",
+    user_last_name: "Pérez",
   },
   {
     type: "payment" as const,
@@ -45,6 +46,7 @@ const DEFAULT_TRANSACTIONS = [
     user_name: "María García",
     user_id: "user_789",
     picture_path: "https://randomuser.me/api/portraits/women/45.jpg",
+    user_last_name: "García",
   },
   {
     type: "deposit" as const,

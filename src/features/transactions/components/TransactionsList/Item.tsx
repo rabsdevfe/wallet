@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowDown, BanknoteArrowDown, CircleDollarSign } from "lucide-react";
 import type { Transaction } from "@/features/transactions/types";
 import { formatTransactionDate } from "@/utils/dateFormatter";
@@ -13,6 +13,8 @@ type Props = {
 };
 
 function Item({ transaction }: Props) {
+  const router = useRouter();
+
   function getIcon(transactionType: Transaction["type"]) {
     switch (transactionType) {
       case "payment":
@@ -23,8 +25,18 @@ function Item({ transaction }: Props) {
         return <BanknoteArrowDown fill="#662ab2" size={18} color="#fff" />;
     }
   }
+
+  const handleRedirectToDetails = (transaction: Transaction) => {
+    if (transaction.type === "transfer") {
+      router.push(`/send-again/details/${transaction.id}`);
+    }
+  };
+
   return (
-    <Link href={`/send-again/details/${transaction.id}`}>
+    <div
+      className={styles.item}
+      onClick={() => handleRedirectToDetails(transaction)}
+    >
       <div className={styles.itemContainer}>
         <div className={styles.itemIconContainer}>
           <div className={styles.itemIcon}>{getIcon(transaction.type)}</div>
@@ -41,8 +53,8 @@ function Item({ transaction }: Props) {
           {buildTransactionAmount(transaction.type, transaction.amount)}
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
-export default Item;
+export { Item };
