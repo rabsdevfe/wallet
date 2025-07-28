@@ -29,6 +29,7 @@ export const TransfersList = () => {
 
   return (
     <div className={styles.container}>
+      <div className="font-bold text-[20px] text-[#000]">Latest transfers</div>
       <div className={styles.list}>
         {transfers.map((transfer: Transaction, index: number) => (
           <Item key={index} transaction={transfer} />

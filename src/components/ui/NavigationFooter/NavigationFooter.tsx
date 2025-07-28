@@ -15,7 +15,7 @@ export const NavigationFooter = () => {
   const pathname = usePathname();
 
   function getIcon(icon: string, isActive: boolean) {
-    const color = isActive ? "#662ab2" : "#000";
+    const color = isActive ? "#662ab2" : "#6b7280";
     if (icon === "home") return <Home color={color} />;
     if (icon === "transfers") return <BanknoteArrowDown color={color} />;
     if (icon === "profile") return <UserCircle2 color={color} />;

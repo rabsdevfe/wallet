@@ -39,7 +39,7 @@ export function AvatarUser({
         alt={name}
         className={`${imageSize[size]} rounded-full object-cover`}
       />
-      <p className={`${textSize[size]} font-bold`}>{name}</p>
+      <p className={`${textSize[size]} font-bold text-[#000]`}>{name}</p>
     </div>
   );
 }
