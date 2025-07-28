@@ -5,3 +5,4 @@ export { PageLayout } from "./PageLayout";
 export { PageContainer } from "./PageContainer";
 export { Navbar } from "./Navbar";
 export { Button } from "./Button";
+export { ListDetails } from "./ListDetails";

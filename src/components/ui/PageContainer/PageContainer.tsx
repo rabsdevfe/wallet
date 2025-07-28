@@ -10,10 +10,7 @@ interface Props {
 
 export const PageContainer = ({ children, className, style }: Props) => {
   return (
-    <div 
-      className={`${styles.container} ${className || ""}`}
-      style={style}
-    >
+    <div className={`${styles.container} ${className || ""}`} style={style}>
       <div className={styles.content}>{children}</div>
     </div>
   );

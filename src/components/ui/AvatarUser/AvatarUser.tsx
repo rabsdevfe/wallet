@@ -1,31 +1,36 @@
+"use client";
+import { imageSize, textSize } from "./constants";
 interface Props {
   url: string;
   name: string;
-  size?: "sm" | "md" | "big";
+  size?: "sm" | "md" | "large";
   orientation?: "horizontal" | "vertical";
+  isLoading?: boolean;
 }
-
-const imageSize = {
-  sm: "w-12 h-12",
-  md: "w-16 h-16",
-  big: "w-60 h-60",
-};
-
-const textSize = {
-  sm: "text-base",
-  md: "text-sm",
-  big: "text-3xl",
-};
 export function AvatarUser({
   url,
   name,
   size = "md",
   orientation = "vertical",
+  isLoading = false,
 }: Props) {
   const containerClasses =
     orientation === "horizontal"
       ? "flex flex-row items-center gap-2.5"
       : "flex flex-col items-center gap-2.5";
+
+  if (isLoading || !url || !name) {
+    return (
+      <div className={containerClasses}>
+        <div
+          className={`${imageSize[size]} rounded-full bg-gray-200 animate-pulse`}
+        />
+        <div
+          className={`${textSize[size]} bg-gray-200 rounded animate-pulse`}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={containerClasses}>
@@ -34,7 +39,7 @@ export function AvatarUser({
         alt={name}
         className={`${imageSize[size]} rounded-full object-cover`}
       />
-      <p className={`${textSize[size]} `}>{name}</p>
+      <p className={`${textSize[size]} font-bold`}>{name}</p>
     </div>
   );
 }

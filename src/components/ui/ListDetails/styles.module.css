@@ -1,0 +1,23 @@
+.listContainer {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listItemKey {
+  color: #999999;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.listItemValue {
+  text-align: end;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}
