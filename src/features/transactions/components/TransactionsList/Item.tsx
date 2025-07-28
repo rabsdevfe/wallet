@@ -1,12 +1,13 @@
 "use client";
-import type { Transaction } from "@/features/transactions/types";
-import styles from "./styles.module.css";
+import Link from "next/link";
 import { ArrowDown, BanknoteArrowDown, CircleDollarSign } from "lucide-react";
+import type { Transaction } from "@/features/transactions/types";
 import { formatTransactionDate } from "@/utils/dateFormatter";
 import {
   buildTransactionAmount,
   buildTransactionName,
 } from "@/features/transactions/utils";
+import styles from "./styles.module.css";
 type Props = {
   transaction: Transaction;
 };
@@ -23,22 +24,24 @@ function Item({ transaction }: Props) {
     }
   }
   return (
-    <div className={styles.itemContainer}>
-      <div className={styles.itemIconContainer}>
-        <div className={styles.itemIcon}>{getIcon(transaction.type)}</div>
-      </div>
-      <div>
-        <div className={styles.itemTitle}>
-          {buildTransactionName(transaction.type, transaction.service_name)}
+    <Link href={`/send-again/details/${transaction.id}`}>
+      <div className={styles.itemContainer}>
+        <div className={styles.itemIconContainer}>
+          <div className={styles.itemIcon}>{getIcon(transaction.type)}</div>
         </div>
-        <div className={styles.itemDate}>
-          {formatTransactionDate(transaction.createdAt)}
+        <div>
+          <div className={styles.itemTitle}>
+            {buildTransactionName(transaction.type, transaction.service_name)}
+          </div>
+          <div className={styles.itemDate}>
+            {formatTransactionDate(transaction.createdAt)}
+          </div>
+        </div>
+        <div className={`${styles.itemAmount} ${styles[transaction.type]}`}>
+          {buildTransactionAmount(transaction.type, transaction.amount)}
         </div>
       </div>
-      <div className={`${styles.itemAmount} ${styles[transaction.type]}`}>
-        {buildTransactionAmount(transaction.type, transaction.amount)}
-      </div>
-    </div>
+    </Link>
   );
 }
 

@@ -37,7 +37,7 @@ function TransactionForm() {
     },
     mode: "onChange",
   });
-  const [amountValue, setAmountValue] = useState("");
+
   const amount = useWatch({
     control,
     name: FORM_NAMES.amount,
@@ -63,9 +63,6 @@ function TransactionForm() {
     processTransfer(payload);
     reset();
   };
-
-  console.log("errors", errors);
-  console.log("isValid", isValid);
 
   if (!balance?.balance) {
     return <div>No balance</div>;

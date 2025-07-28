@@ -1,3 +1,5 @@
+import { formatDate } from "@/utils/dateFormatter";
+import { formatTime } from "@/utils/dateFormatter";
 import type { Transaction } from "./types";
 import { Contact } from "@/types/contacts";
 
@@ -51,8 +53,29 @@ function buildProcessTransferPayload({
   };
 }
 
+function buildTransactionDetails(transaction?: Transaction | null) {
+  if (!transaction) {
+    return [];
+  }
+  const details = [
+    { key: "Payment", value: `$${transaction.amount}` },
+    { key: "Date", value: formatDate(transaction.createdAt) },
+    { key: "Time", value: formatTime(transaction.createdAt) },
+    { key: "Type", value: transaction.type },
+  ];
+
+  if (transaction.description) {
+    details.splice(1, 0, {
+      key: "Description",
+      value: transaction.description,
+    });
+  }
+  return details;
+}
+
 export {
   buildTransactionName,
   buildTransactionAmount,
   buildProcessTransferPayload,
+  buildTransactionDetails,
 };

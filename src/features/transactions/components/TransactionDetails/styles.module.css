@@ -1,0 +1,58 @@
+.successTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #03b961;
+}
+
+.successDescription {
+  font-size: 16px;
+  color: #999999;
+  margin-bottom: 28px;
+}
+
+.amount {
+  font-size: 40px;
+  font-weight: bold;
+  color: #121212;
+}
+
+.sendToWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sendToTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  margin-top: 40px;
+}
+
+.sendToUser {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.sendToUserImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.sendToUserName {
+  font-size: 16px;
+  font-weight: bold;
+  color: #121212;
+}
+
+.transactionDetailsText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 16px;
+}

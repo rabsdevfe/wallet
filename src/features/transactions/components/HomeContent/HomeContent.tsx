@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-function PageContent({ className }: Props) {
+function HomeContent({ className }: Props) {
   return (
     <div className={className || ""}>
       <Contacts />
@@ -15,4 +15,4 @@ function PageContent({ className }: Props) {
   );
 }
 
-export { PageContent };
+export { HomeContent };
