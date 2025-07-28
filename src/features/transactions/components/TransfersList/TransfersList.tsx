@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useFetchTransfers } from "../../hooks/useFetchTransfers";
 import { useTransactionsStore } from "../../store";
 import type { Transaction } from "../../types";
-import { formatTransactionDate } from "@/utils/dateFormatter";
 import Item from "./Item";
 import styles from "./styles.module.css";
 import { Button } from "@/components/ui";
