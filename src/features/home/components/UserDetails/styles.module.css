@@ -1,6 +1,7 @@
 .container {
   width: 80%;
   max-width: 375px;
+  min-height: 185px;
 }
 .balanceBox {
   padding: 8px;

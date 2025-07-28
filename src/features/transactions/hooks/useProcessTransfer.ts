@@ -28,7 +28,7 @@ export const useProcessTransfer = () => {
       router.push(`/send-again/details/${result.transaction.id}`);
     },
     onError: (error) => {
-      console.error("Error procesando transferencia:", error);
+      console.error("Error Processing Transfer:", error);
     },
   });
 };

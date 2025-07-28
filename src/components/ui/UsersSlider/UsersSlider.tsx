@@ -11,7 +11,7 @@ function UserSliders({ contacts, onSelect }: Props) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <div className="flex gap-6 pb-4">
+      <div className="flex gap-6 pb-4 scrollbar-hide">
         {" "}
         {contacts.map((contact, index) => (
           <div

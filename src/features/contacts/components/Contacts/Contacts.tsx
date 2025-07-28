@@ -14,14 +14,14 @@ export function Contacts() {
     return (
       <div className="p-4">
         <h2 className={styles.title}>Send Again</h2>
-        <div className="space-y-2">
+        <div className="flex space-x-4">
           {Array.from({ length: 3 }).map((_, i) => (
             <div
               key={i}
-              className="flex items-center space-x-3 p-2 animate-pulse"
+              className="flex flex-col items-center p-2 animate-pulse"
             >
-              <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
-              <div className="h-4 bg-gray-300 rounded w-24"></div>
+              <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+              <div className="h-3 bg-gray-300 rounded w-20 mt-2"></div>
             </div>
           ))}
         </div>

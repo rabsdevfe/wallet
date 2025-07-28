@@ -6,3 +6,4 @@ export { PageContainer } from "./PageContainer";
 export { Navbar } from "./Navbar";
 export { Button } from "./Button";
 export { ListDetails } from "./ListDetails";
+export { Loader } from "./Loader";
