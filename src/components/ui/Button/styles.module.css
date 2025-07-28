@@ -1,0 +1,23 @@
+.baseStyles {
+  width: 100%;
+  border-radius: 28px;
+  padding: 13px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.primary-reverse {
+  background-color: #fff;
+  color: var(--primary-color);
+}
+
+.outline {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}

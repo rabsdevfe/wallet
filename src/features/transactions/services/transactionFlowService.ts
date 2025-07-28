@@ -41,13 +41,13 @@ export const transactionFlowService = {
 
         if (!currentBalance) {
           tx.abort();
-          reject(new Error("No se encontró balance del usuario"));
+          reject(new Error("No balance found for user"));
           return;
         }
 
         if (currentBalance.balance < transferData.amount) {
           tx.abort();
-          reject(new Error("Fondos insuficientes"));
+          reject(new Error("Insufficient funds"));
           return;
         }
 
