@@ -50,6 +50,7 @@ function buildProcessTransferPayload({
     user_name: contact.name.first,
     user_id: contact.id.value,
     picture_path: contact.picture.thumbnail,
+    user_last_name: contact.name.last,
   };
 }
 
@@ -62,6 +63,7 @@ function buildTransactionDetails(transaction?: Transaction | null) {
     { key: "Date", value: formatDate(transaction.createdAt) },
     { key: "Time", value: formatTime(transaction.createdAt) },
     { key: "Type", value: transaction.type },
+    { key: "Reference Number", value: `#${transaction.reference_number}` },
   ];
 
   if (transaction.description) {
@@ -73,9 +75,14 @@ function buildTransactionDetails(transaction?: Transaction | null) {
   return details;
 }
 
+const generateReferenceNumber = (): string => {
+  return Math.floor(1000000 + Math.random() * 9000000).toString();
+};
+
 export {
   buildTransactionName,
   buildTransactionAmount,
   buildProcessTransferPayload,
   buildTransactionDetails,
+  generateReferenceNumber,
 };

@@ -5,14 +5,14 @@ import styles from "./styles.module.css";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: string;
-  variant: "primary" | "outline" | "primary-reverse";
+  variant?: "primary" | "outline" | "primary-reverse";
 };
 function Button({
   children,
   onClick,
   disabled,
   className,
-  variant,
+  variant = "primary",
   ...props
 }: Props) {
   return (

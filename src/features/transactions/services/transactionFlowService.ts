@@ -2,14 +2,17 @@ import { dbClient } from "@/lib/dbClient";
 import { TRANSACTIONS_STORE, BALANCE_STORE } from "@/lib/contants";
 import { Transaction } from "../types";
 import { Balance } from "@/features/balance/types";
+import { generateReferenceNumber } from "../utils";
 
-export interface TransferData {
-  amount: number;
-  description: string;
-  user_name?: string;
-  user_id?: string;
-  picture_path?: string;
-}
+export type TransferData = Pick<
+  Transaction,
+  | "amount"
+  | "description"
+  | "user_name"
+  | "user_id"
+  | "picture_path"
+  | "user_last_name"
+>;
 
 export interface TransferResult {
   transaction: Transaction;
@@ -58,7 +61,9 @@ export const transactionFlowService = {
           user_name: transferData.user_name,
           user_id: transferData.user_id,
           picture_path: transferData.picture_path,
+          reference_number: generateReferenceNumber(),
           createdAt: new Date(),
+          user_last_name: transferData.user_last_name,
         };
 
         const addTransactionRequest = transactionsStore.add(newTransaction);

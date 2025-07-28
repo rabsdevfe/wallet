@@ -22,7 +22,11 @@ function TransactionDetails({ transaction }: Props) {
             src={transaction?.picture_path}
             alt={transaction?.user_name}
           />
-          <div className={styles.sendToUserName}>{transaction?.user_name}</div>
+
+          <div className={styles.sendToUserName}>
+            {transaction?.user_name}
+            <div>{transaction?.user_last_name}</div>
+          </div>
         </div>
       </div>
       <div className={styles.transactionDetailsText}>Transaction Details</div>

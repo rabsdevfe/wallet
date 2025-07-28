@@ -6,4 +6,4 @@ export * from "./services/transactionsService";
 export * from "./services/transactionFlowService";
 export * from "./store";
 export * from "./types";
-export * from "./components/TransfersList";
+export * from "./components/TransfersList/TransfersList";

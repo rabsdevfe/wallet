@@ -7,11 +7,13 @@ interface TransactionsStore {
   transfers: Transaction[];
   isLoading: boolean;
   isLoadingTransfers: boolean;
+  hasMoreTransfers: boolean;
   setTransactions: (transactions: Transaction[]) => void;
   setTransfers: (transfers: Transaction[]) => void;
   setLoading: (loading: boolean) => void;
   setLoadingTransfers: (loading: boolean) => void;
   addTransaction: (transaction: Transaction) => void;
+  setHasMoreTransfers: (hasMoreTransfers: boolean) => void;
 }
 
 export const useTransactionsStore = create<TransactionsStore>((set) => ({
@@ -19,6 +21,7 @@ export const useTransactionsStore = create<TransactionsStore>((set) => ({
   transfers: [],
   isLoading: false,
   isLoadingTransfers: false,
+  hasMoreTransfers: false,
   setTransactions: (transactions: Transaction[]) => set({ transactions }),
   setTransfers: (transfers: Transaction[]) => set({ transfers }),
   setLoading: (isLoading: boolean) => set({ isLoading }),
@@ -32,4 +35,5 @@ export const useTransactionsStore = create<TransactionsStore>((set) => ({
           ? [transaction, ...state.transfers]
           : state.transfers,
     })),
+  setHasMoreTransfers: (hasMoreTransfers: boolean) => set({ hasMoreTransfers }),
 }));

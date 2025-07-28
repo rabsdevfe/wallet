@@ -1,23 +1,36 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import type { TransactionQuery } from "../types";
 import { transactionsService } from "../services/transactionsService";
 import { useTransactionsStore } from "../store";
-import type { TransactionQuery } from "../types";
 
 export const useFetchTransfers = (
   query: TransactionQuery = { page: 1, limit: 10 }
 ) => {
-  const { setTransfers, setLoadingTransfers } = useTransactionsStore();
+  const { setTransfers, setLoadingTransfers, setHasMoreTransfers } =
+    useTransactionsStore();
 
-  return useQuery({
-    queryKey: ["transactions", "transfers", query],
+  const queryResult = useQuery({
+    queryKey: ["transactions", "transfers", query.page, query.limit],
     queryFn: async () => {
       setLoadingTransfers(true);
       const result = await transactionsService.getTransfers(query);
-      setTransfers(result.data);
       setLoadingTransfers(false);
       return result;
     },
     staleTime: 2 * 60 * 1000,
     gcTime: 5 * 60 * 1000,
   });
+
+  useEffect(
+    function updateStore() {
+      if (queryResult.data) {
+        setTransfers(queryResult.data.data);
+        setHasMoreTransfers(queryResult.data.hasMore);
+      }
+    },
+    [queryResult.data, setTransfers]
+  );
+
+  return queryResult;
 };

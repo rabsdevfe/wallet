@@ -1,6 +1,7 @@
 "use client";
 import { AvatarUser } from "../AvatarUser";
 import { Contact } from "@/types/contacts";
+import styles from "./styles.module.css";
 
 interface Props {
   contacts: Contact[];
@@ -11,7 +12,7 @@ function UserSliders({ contacts, onSelect }: Props) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <div className="flex gap-6 pb-4 scrollbar-hide">
+      <div className={`flex gap-6 pb-4 ${styles.slider}`}>
         {" "}
         {contacts.map((contact, index) => (
           <div
